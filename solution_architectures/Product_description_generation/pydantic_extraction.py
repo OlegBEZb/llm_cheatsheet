@@ -75,14 +75,11 @@ def extract_pydantic_from_text(raw_structure: str, llm) -> List[str]:
     Example of usage:
     class_definitions = extract_pydantic_from_text(raw_structure)
     for class_name, class_code in class_definitions:
-        logger.info(
-            f"Executing the code below to initialise a structure class '{class_name}'\n```\n{class_code}\n```\n\n")
+        logger.info(f"Executing the code below to initialise a structure class '{class_name}'\n```\n{class_code}\n```\n\n")
         exec(class_code)
         globals()[class_name] = locals()[class_name]
-    product_structure_parser = PydanticOutputParserExt(
-        pydantic_object=ProductStructure)
-    bullet_point_structure_parser = PydanticOutputParserExt(
-        pydantic_object=BulletPointsStructure)
+    product_structure_parser = PydanticOutputParserExt(pydantic_object=ProductStructure)
+    bullet_point_structure_parser = PydanticOutputParserExt(pydantic_object=BulletPointsStructure)
     """
     llm_chain = LLMChain(llm=llm, prompt=structure_generation_prompt_template, verbose=True)
     generation = llm_chain.predict(structure_description=raw_structure)
