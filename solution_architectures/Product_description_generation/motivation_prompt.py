@@ -1,0 +1,1 @@
+MOTIVATION_PROMPT = "It is very important that you get this right. Multiple lives are at stake. I'll tip you $200 for the perfect answer."
