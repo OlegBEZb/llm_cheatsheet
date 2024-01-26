@@ -30,7 +30,7 @@ class PromptInputIssues(BaseModel):
     """
     A model representing the issues found in the input product description.
     """
-    product_type: str = Field(..., description="Type of the product from Page Title, one of [machines, capsules, packs]")
+    product_type: str = Field(..., description="Type of the product from Page Title")
     issues: Dict[str, InputIssue] = Field(..., description="Dict of issues found. Key is the name of the field. In case of nested fields, wrap all the underlying elements of this field in one issue.")
 
 input_issue_parser = PydanticOutputParser(pydantic_object=PromptInputIssues)
